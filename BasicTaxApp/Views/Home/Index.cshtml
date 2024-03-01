@@ -1,0 +1,53 @@
+﻿@using BasicTaxApp.Models;
+
+@model IEnumerable<IEnumerable<Product>>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+    int count =0 ;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center">Welcome</h1>
+    <div class="d-flex flex-row">
+    @foreach(var input in Model)
+    {
+        count++;
+
+          <div class="border m-2">
+              <div class="text-center h4">Input @count</div>
+            
+             @foreach(var item in input)
+             {
+                    <div class="card m-5" style="width: 18rem;">
+                        <div class="card-body">
+                            <span class="card-text">@item.Quantity</span>
+                            <span class="card-text">@item.Name</span>
+                            <span class="card-text">at</span>
+                            <span class="card-text">@item.price</span>
+                            <br />
+                        </div>
+                
+                     </div>          
+             }
+             <div class="text-center h4">
+                    @Html.ActionLink("Reciept", $"Input{count}", "Home",null)
+             </div>         
+          </div>
+    }
+  
+    </div>
+
+    <h5>Completed by Tshepo Monene</h5>
+</body>
+</html>
